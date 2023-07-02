@@ -8,7 +8,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 COPY . .
-RUN composer install
+# RUN composer install
 RUN composer require laravel/ui
 RUN php artisan ui vue
 RUN npm install

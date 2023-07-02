@@ -16,8 +16,7 @@ RUN composer require laravel/ui
 RUN php artisan ui vue
 RUN npm install
 RUN php artisan ui vue --auth
-RUN npm install 
-RUN npm run dev
+RUN npm install
 
 CMD php artisan serve --host=0.0.0.0 --port=8181
 EXPOSE 8181

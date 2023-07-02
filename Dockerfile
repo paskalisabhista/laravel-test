@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN docker-php-ext-install pdo pdo_mysql sockets

@@ -1,9 +1,13 @@
-FROM php:8.0.5
-RUN apt-get update -y && apt-get install -y openssl zip unzip git
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+FROM php:7.4-fpm-alpine
+
+RUN docker-php-ext-install pdo pdo_mysql sockets
+RUN curl -sS https://getcomposer.org/installer​ | php -- \
+     --install-dir=/usr/local/bin --filename=composer
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 WORKDIR /app
-COPY . /app
+COPY . .
 RUN composer install
 RUN composer require laravel/ui
 RUN php artisan ui vue

@@ -4,7 +4,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN docker-php-ext-install pdo pdo_mysql sockets
 RUN curl -sS https://getcomposer.org/installer​ | php -- \
      --install-dir=/usr/local/bin --filename=composer
-RUN apt-get update && apt-get install -y \ git \ npm
+RUN apt-get update && apt-get install -y git
+RUN apt-get install -y git npm
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

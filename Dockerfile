@@ -15,7 +15,6 @@ COPY . .
 RUN composer require laravel/ui
 RUN php artisan ui vue
 RUN npm install
-RUN npm run dev
 RUN php artisan ui vue --auth
 RUN npm install 
 RUN npm run dev

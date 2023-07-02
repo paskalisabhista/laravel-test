@@ -18,5 +18,7 @@ RUN npm install
 RUN php artisan ui vue --auth
 RUN npm install
 
-CMD php artisan serve
-EXPOSE 8181
+EXPOSE 80
+
+# Start the PHP development server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
